@@ -1,4 +1,5 @@
 using CervejariaGCS.Data;
+using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,7 +29,10 @@ builder
 
 builder
     .Services
-    .AddDbContext<GCSDataContext>();
+    .AddDbContext<GCSDataContext>(builder =>
+    {
+        builder.UseSqlServer("Server=localhost,1433;Database=CervejariaGCS;User ID=sa;Password=k@FGu@r5");
+    });
 
 var app = builder.Build();
 
