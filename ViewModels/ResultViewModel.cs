@@ -1,4 +1,6 @@
-﻿namespace CervejariaGCS.ViewModels
+﻿using System.Text.Json.Serialization;
+
+namespace CervejariaGCS.ViewModels
 {
     public class ResultViewModel<T>
     {
@@ -24,6 +26,7 @@
             Errors.Add(error);
         }
 
+        [JsonPropertyName("data")]
         public T Data { get; private set; }
 
         public List<string> Errors { get; set; } = new List<string>();
